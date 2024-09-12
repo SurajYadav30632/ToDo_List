@@ -1,49 +1,6 @@
 @extends('Layout.default')
 @section('content')
-    <style>
-        .container {
-            text-align: center;
-        }
-        h1{
-            font-family: Arial, Helvetica, sans-serif;
-            color: rgb(137, 137, 219);
-            text-align: center;
-            border-bottom: 1px solid #ccc;
-            display: inline-block;
-        }
-        .task-header {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0px;
-            align-content: center;
-        }
-        .tasks {
-            display: flex;
-            width: 30%;
-        }
-        .task-status{
-            display: flex;
-        }
-        span.sequence {
-            padding: 0px 20px;
-            margin: 0px 30px;
-        }
-
-        span.task-name {
-            padding: 20px 40px;
-        }
-
-        span.staus {
-            padding: 0 20px;
-            margin: 0 20px;
-        }
-        .text-danger {
-            display: inline-block;
-        }
-        .edit {
-            margin-right: 5px;
-        }
-    </style>
+    
     <div class="container">
         <h1>PHP - Simple To Do List App </h1>
         <div class="input-section">
