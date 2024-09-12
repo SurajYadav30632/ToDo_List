@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\TodoService;
+use Exception;
 use Illuminate\Http\Request;
 
 class TodoController extends Controller{
@@ -14,31 +15,48 @@ class TodoController extends Controller{
     }
     
     public function index(Request $request){
-        $tasks = $this->TodoService->getList();
-        return view('Todo.index',compact('tasks'));
+        try{ 
+            $tasks = $this->TodoService->getList();
+            return view('Todo.index',compact('tasks'));
+        }catch(Exception $e){
+            return json_encode(['code'=>500,'error'=>$e->getMessage()]);
+        }
     }
 
     public function add(Request $request){
         $request->validate([
             'task'=>'required|unique:todos|max:100'
         ]);
-        $response = $this->TodoService->addTask($request->all());
-        return json_encode($response);
+
+        try{
+            $response = $this->TodoService->addTask($request->all());
+            return json_encode($response);
+        }catch(Exception $e){
+            return json_encode(['code'=>500,'error'=>$e->getMessage()]);
+        }
     }
 
     public function delete(Request $request){
         $request->validate([
             'id'=>'required'
         ]);
-        $response = $this->TodoService->deleteTask($request->all()['id']);
-        return json_encode($response);
+        try{
+            $response = $this->TodoService->deleteTask($request->all()['id']);
+            return json_encode($response);
+        }catch(Exception $e){
+            return json_encode(['code'=>500,'error'=>$e->getMessage()]);
+        }
     }
 
     public function edit(Request $request){
         $request->validate([
             'id'=>'required'
         ]);
-        $response = $this->TodoService->updateTaskAsCompleted($request->all()['id']);
-        return json_encode($response);
+        try{
+            $response = $this->TodoService->updateTaskAsCompleted($request->all()['id']);
+            return json_encode($response);
+        }catch(Exception $e){
+            return json_encode(['code'=>500,'error'=>$e->getMessage()]);
+        }
     }
 }
