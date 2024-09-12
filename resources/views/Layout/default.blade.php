@@ -3,7 +3,6 @@
     @include('Layout.head')
 <body>
     <main>
-    </main>
         @yield('content')
     </main>
 </body>
