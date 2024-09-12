@@ -35,7 +35,7 @@ span.staus {
     margin: 0 20px;
 }
 .text-danger {
-    display: inline-block;
+    display: inline-block !important;
 }
 .edit {
     margin-right: 5px;

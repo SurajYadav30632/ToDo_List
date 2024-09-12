@@ -43,7 +43,8 @@ function sendRequest(url,postData){
         },
         url :"/"+url,
         data :postData,        
-        beforeSend: function() {            
+        beforeSend: function() {   
+            $('.invalid-feedback').html('');         
         },  
         success : function(result){                            
             var responseData = $.parseJSON(result);
